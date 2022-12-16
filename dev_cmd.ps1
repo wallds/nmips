@@ -2,7 +2,7 @@ function MsDevShell {
     # Use `vswhere` to locate Visual Studio editions.
     $products = 'Community','Professional','Enterprise','BuildTools' | %{ "Microsoft.VisualStudio.Product.$_" }
     $vswhere = Get-Command 'vswhere'
-    $vs = & $vswhere.Path -products $products -latest -version '[16.11,16.12)' -format json | ConvertFrom-Json
+    $vs = & $vswhere.Path -products $products -latest -format json | ConvertFrom-Json
     $tools = Join-Path $vs.installationPath 'Common7' 'Tools'
     try {
     # Attempt 1 (Visual Studio 2019 and newer)
