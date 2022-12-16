@@ -167,8 +167,7 @@ if host_machine.system() == 'darwin'
   actual_lib_path_arm = sdk_lib / 'arm64_mac_clang_32'
   ida_dep_arm = declare_dependency(
     link_args: ['-L'+actual_lib_path_arm, '-lida'],
-    include_directories: sdk_inc_dir,
-    is_system: true
+    include_directories: sdk_inc_dir
   )
   shared_library('arm_nmips', src_files, dependencies: [ida_dep_arm, thread_dep, dl_dep], override_options: override_options, include_directories: inc_dir, link_args: ['-target', 'arm64-apple-macos11'], cpp_args: ['-target', 'arm64-apple-macos11'], c_args: ['-target', 'arm64-apple-macos11'])
 endif
