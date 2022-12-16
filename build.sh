@@ -4,7 +4,7 @@ echo "[*] Building nmips plugin at $BUILD_DIR!"
 rm -rf $BUILD_DIR || echo "No existing build dir, sadge"
 mkdir $BUILD_DIR
 
-SDK_DOWNLOAD="https://bigfile.mail.naver.com/download?fid=3XRGWNiZb4twHqujFre5aAUqKouwHqUmKoUwKourKxEdaAUlHqurFqKXaxtXaxvjMrKlMqi4p6KrK4FSFot9K4UdFr3SFrt9poMlFAuqFqt="
+SDK_DOWNLOAD="https://bigfile.mail.naver.com/download?fid=3XFGWNiZb4twHqujFre5aAgrFobrHqUmKoUwKourKxMmFqgwHqurFqKXaxtXaxvjKzKmFzUXMxJoFoMrKoUwM6KrFxJ4poUZKAtlFoblFA2="
 echo "[*] Downloading idasdk..."
 wget $SDK_DOWNLOAD -O $BUILD_DIR/idasdk.enc.zip
 echo "[*] Decrypting idasdk..."
