@@ -22,8 +22,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
+        os: [ubuntu-latest, macos-11, windows-latest]
         include:
+          - os: ubuntu-latest
+            pkg: sudo apt-get install -y openssl wget
+            artifact: libnmips.so
+            name: linux
+          - os: macos-11
+            pkg: brew install openssl wget
+            artifact: lib*nmips.dylib
+            name: macos
           - os: windows-latest
             pkg: choco install openssl wget
             artifact: '*nmips.dll'
@@ -42,11 +50,18 @@ jobs:
           python-version: '3.x'
       - run: pip install meson ninja
 
-      - name: Add msbuild to PATH
-        uses: microsoft/setup-msbuild@v1.1
+      # - uses: ilammy/msvc-dev-cmd@v1
+      #   if: ${{ matrix.os == 'windows-latest' }}
+
+      # - name: Add msbuild to PATH
+      #   uses: microsoft/setup-msbuild@v1.0.3
+      #   if: ${{ matrix.os == 'windows-latest' }}
+      #   with:
+      #     vs-version: '[16.11,16.12)'
+
+      - name: Really do msbuild this time pls
         if: ${{ matrix.os == 'windows-latest' }}
-        with:
-          msbuild-architecture: x64
+        run: ./dev_cmd.ps1
         
       - name: Build
         env:
