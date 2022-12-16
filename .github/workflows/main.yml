@@ -22,7 +22,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-11]
         include:
           - os: ubuntu-latest
             pkg: sudo apt-get install -y openssl wget
@@ -32,6 +32,10 @@ jobs:
             pkg: choco install openssl wget
             artifact: '*nmips.dll'
             name: windows
+          - os: macos-11
+            pkg: brew install openssl wget
+            artifact: lib*nmips.dylib
+            name: macos
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
