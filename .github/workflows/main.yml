@@ -24,18 +24,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-11]
         include:
-          - os: ubuntu-latest
-            pkg: sudo apt-get install -y openssl wget
-            artifact: libnmips.so
-            name: linux
           - os: windows-latest
-            pkg: choco install openssl wget
+            pkg: choco install wget vcredist2015 visualstudio2019buildtools && choco install openssl --version=1.1.1.2100
             artifact: '*nmips.dll'
             name: windows
-          - os: macos-11
-            pkg: brew install openssl wget
-            artifact: lib*nmips.dylib
-            name: macos
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
