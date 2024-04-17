@@ -6,7 +6,8 @@ mkdir $BUILD_DIR
 
 # SDK_DOWNLOAD="https://hex-rays.com/products/ida/support/ida/idasdk76.zip"
 # SDK_DOWNLOAD="https://cdn.vis.ethz.ch/ctf/idasdk.zip"
-SDK_DOWNLOAD="https://github.com/luodaoyi/IDAStringFindNet/raw/master/idasdk76.zip"
+# SDK_DOWNLOAD="https://github.com/luodaoyi/IDAStringFindNet/raw/master/idasdk76.zip"
+SDK_DOWNLOAD="https://github.com/helloobaby/idasdk76/archive/refs/heads/main.zip"
 echo "[*] Downloading idasdk..."
 # wget --http-user=$IDA_USER --http-password=$IDA_PASS $SDK_DOWNLOAD -O $BUILD_DIR/idasdk.zip
 wget $SDK_DOWNLOAD -O $BUILD_DIR/idasdk.zip
@@ -16,7 +17,9 @@ echo "[*] Setting up idasdk..."
 cd $BUILD_DIR
 unzip idasdk
 cd $CUR
-export IDA_SDK=$BUILD_DIR/idasdk76
+export IDA_SDK=$BUILD_DIR/idasdk76-main
+echo "[*] Copying hexrays headers"
+cp $IDA_SDK/include/hexrays_sdk/include/* $IDA_SDK/include
 echo "[*] IDA SDK at $IDA_SDK"
 
 # echo "[*] Setting up and building binutils..."
