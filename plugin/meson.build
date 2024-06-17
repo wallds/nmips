@@ -140,7 +140,7 @@ endif
 override_options = []
 
 if host_machine.system() == 'windows'
-  override_options += ['cpp_std=c++latest'] # because apparently github actions does not support c++20??
+  override_options += ['cpp_std=c++latest', '/MT'] # because apparently github actions does not support c++20??
 else
   override_options += ['cpp_std=c++20'] # fuck meson
 endif
